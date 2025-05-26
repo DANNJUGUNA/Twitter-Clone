@@ -11,6 +11,19 @@ interface User {
     website: string,
     company: object
 }
+interface Post{
+  userId: number,
+  id: number
+  title: string,
+  body: string
+}
+interface Comment{
+  postId: number,
+  id: number,
+  name: string,
+  email: string,
+  body: string
+}
 
 async function fetchUsers(): Promise<User[]> {
   const response = await fetch(`${USERS_API}`);
@@ -32,5 +45,4 @@ userSelect.innerHTML = '';
     option.textContent = user.name;
     userSelect.appendChild(option);
   }));
-fetchUsers();
 
