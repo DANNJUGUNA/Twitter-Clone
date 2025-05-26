@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px;
+    background-color: rgb(101, 101, 243);
+    color: #ffff;
+}
+.right>span{
+ padding-right: 12px;
+}
+.right> select{
+    width: 250px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+}
+.hero{
+    height: 200px;
+    background-image: url("https://cdn.pixabay.com/photo/2023/09/12/17/59/stones-8249322_640.jpg");
+    background-position: center;
+    background-size: cover;
+
+}
