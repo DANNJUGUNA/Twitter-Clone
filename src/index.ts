@@ -43,6 +43,7 @@ let comments:Comment[]
 const selectUser= document.getElementById('userSelect') as HTMLSelectElement;
 const profileDetails=document.getElementById('profileDetails') as HTMLDivElement;
 const postslist=document.getElementById('postslist') as HTMLDivElement;
+const commentslist=document.getElementById('commentslist')!;
 let getUsers = async () => {
     const response = await fetch(USERS_API);
         users = await response.json();
@@ -73,8 +74,9 @@ let displayUserprofile=(userId:number, users:User[])=>{
     postslist.innerHTML='';
 
     posts.forEach(post=>{
-      const cont=`
-      <div class="conatainer" id="container">
+      const container = document.createElement('div')!;
+     container.className = 'container';
+      container.innerHTML=`
         <img src="./images/profile.png" alt="profile" class="profile">
         <div class="content">
           <div class="title">
@@ -89,21 +91,51 @@ let displayUserprofile=(userId:number, users:User[])=>{
               <p style=" display: inline-flex;"><ion-icon name="heart" style="font-size:24px; color:red; padding-right:10px;"></ion-icon> 200</p>
           </div>
         <div>
-    </div>
-      `
-      postslist.innerHTML+=cont;
-      const conatainer= document.getElementById('conatainer')!;
-    })
+      `;
+      container.addEventListener('click', () => {
+        console.log(post.id)
+      getComments(post.id)
+    });
+    postslist.appendChild(container);
+    });
+    if (posts.length > 0) {
+            getComments(posts[0].id);
+        }
  }
-let getComments= async(postId:number)=>{
- const response= await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
- comments=await response.json();
+let getComments= async (postId:number)=>{
+    const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
+    const comments = await response.json();
+    commentslist.innerHTML='';
+    const p = document.createElement('p')!;
+    p.innerHTML = `Post ${postId.toString()} comments`;
+    commentslist.appendChild(p)
+    comments.forEach((comment: { name: any; body: any; }) => {
+      const container = document.createElement('div')!;
+      container.className = 'container';
+      container.innerHTML=`
+        <img src="./images/profile.png" alt="profile" class="profile">
+        <div class="content">
+          <div class="title">
+            <h3 style="display:inline-flex;"> ${comment.name} 
+             <ion-icon name="logo-twitter" style="color:blue; padding-left:10px; backgroud-color:blue;"></ion-icon>
+             </h3>
+          </div>
+          <p>${comment.body}</>
+          <div style=" display:flex; gap:40px;">
+              <p style=" display: inline-flex;"><ion-icon name="chatbubbles" style="font-size:24px; padding-right:10px;"></ion-icon> 0</p>
+              <p style=" display: inline-flex;"><ion-icon name="repeat" style="font-size:24px; padding-right:10px;"></ion-icon> 0</p>
+              <p style=" display: inline-flex;"><ion-icon name="heart" style="font-size:24px; color:red; padding-right:10px;"></ion-icon> 0</p>
+          </div>
+        <div>
+      `;  
+      commentslist.appendChild(container);
+        });
 }
 
 selectUser.addEventListener('change', () => {
     const userId = parseInt(selectUser.value);
     const selectedOption = selectUser.options[selectUser.selectedIndex];
-  const username = selectedOption.textContent || "Unknown User";
+    const username = selectedOption.textContent || "Unknown User";
     getPosts(userId, username);
     displayUserprofile(userId,users)
 });

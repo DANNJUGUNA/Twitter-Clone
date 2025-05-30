@@ -54,14 +54,21 @@
     justify-content: space-around;
 }
 .conatainer{
-    display: flex;
+    display: inline-flex;
     padding: 12px;
+    flex-direction: row;
+    width: 50%;
 }
 .profile{
     width: 40px;
     height: 45px;
 }
 .title{
-    display: flex;
+   display: inline-flex;
     padding-left: 10px;
+}
+.postsAndcomments{
+    display: flex;
+    gap: 10px;
+    margin: 10px;
 }
