@@ -53,15 +53,21 @@
     margin: 20px;
     justify-content: space-around;
 }
-.conatainer{
+#postslist{
+    gap: 10px;
+}
+.container{
     display: inline-flex;
     padding: 12px;
-    flex-direction: row;
-    width: 50%;
+}
+.container>p{
+    width: 100%;
+   padding-left: 10px;
 }
 .profile{
-    width: 40px;
-    height: 45px;
+    width: 50px;
+    height: 70px;
+    display: inline-flex;
 }
 .title{
    display: inline-flex;
