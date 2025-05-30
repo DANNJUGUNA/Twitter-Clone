@@ -84,8 +84,8 @@ let displayUserprofile=(userId:number, users:User[])=>{
              <ion-icon name="logo-twitter" style="color:blue; padding-left:10px; backgroud-color:blue;"></ion-icon>
              </h3>
           </div>
-          <p>${post.body}</>
-          <div style=" display:flex; gap:40px;">
+          <p style="margin-left:10px; padding-top:10px; padding-bottom:10px;">${post.body}</>
+          <div style=" display:flex; gap:40px; margin-left:10px;">
               <p style=" display: inline-flex;"><ion-icon name="chatbubbles" style="font-size:24px; padding-right:10px;"></ion-icon> 200</p>
               <p style=" display: inline-flex;"><ion-icon name="repeat" style="font-size:24px; padding-right:10px;"></ion-icon> 200</p>
               <p style=" display: inline-flex;"><ion-icon name="heart" style="font-size:24px; color:red; padding-right:10px;"></ion-icon> 200</p>
@@ -116,16 +116,18 @@ let getComments= async (postId:number)=>{
         <img src="./images/profile.png" alt="profile" class="profile">
         <div class="content">
           <div class="title">
-            <h3 style="display:inline-flex;"> ${comment.name} 
+            <p style="display:inline-flex;"> ${comment.name} 
              <ion-icon name="logo-twitter" style="color:blue; padding-left:10px; backgroud-color:blue;"></ion-icon>
-             </h3>
+             </p>
           </div>
-          <p>${comment.body}</>
-          <div style=" display:flex; gap:40px;">
+          <p style="margin-left:10px;padding-top:10px; padding-bottom:10px;">${comment.body}</>
+          <hr style="margin-left:10px; margin-bottom:5px;"/>
+          <div style=" display:flex; gap:40px; margin-left:10px;">
               <p style=" display: inline-flex;"><ion-icon name="chatbubbles" style="font-size:24px; padding-right:10px;"></ion-icon> 0</p>
               <p style=" display: inline-flex;"><ion-icon name="repeat" style="font-size:24px; padding-right:10px;"></ion-icon> 0</p>
               <p style=" display: inline-flex;"><ion-icon name="heart" style="font-size:24px; color:red; padding-right:10px;"></ion-icon> 0</p>
           </div>
+          
         <div>
       `;  
       commentslist.appendChild(container);
